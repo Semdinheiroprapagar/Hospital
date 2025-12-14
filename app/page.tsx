@@ -8,6 +8,14 @@ import ContactSection from '@/components/ContactSection';
 import db from '@/lib/db';
 import './page.css';
 
+// Helper function to convert Date to ISO string (handles both Date objects and strings)
+function toISOString(date: Date | string): string {
+  if (typeof date === 'string') {
+    return date; // Already a string (Supabase)
+  }
+  return date.toISOString(); // Convert Date to string (SQLite)
+}
+
 export default async function Home() {
   // Fetch banners
   const banners = await db.getBanners();
@@ -19,7 +27,7 @@ export default async function Home() {
     .slice(0, 6)
     .map(post => ({
       ...post,
-      created_at: post.created_at.toISOString(),
+      created_at: toISOString(post.created_at),
     }));
 
   // Fetch published testimonials (limit to 3)
@@ -29,7 +37,7 @@ export default async function Home() {
     .slice(0, 3)
     .map(t => ({
       ...t,
-      created_at: t.created_at.toISOString(),
+      created_at: toISOString(t.created_at),
     }));
 
   // Fetch history items
