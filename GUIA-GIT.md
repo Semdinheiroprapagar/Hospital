@@ -6,7 +6,7 @@
 
 1. Acesse: https://github.com/new
 2. Preencha:
-   - **Repository name**: `hospital-site` (ou o nome que preferir)
+   - **Repository name**: `hospital` (ou o nome que preferir)
    - **Description**: "Site do Hospital com integração Supabase"
    - **Visibility**: Private (recomendado) ou Public
    - ⚠️ **NÃO** marque "Add a README file"
@@ -20,7 +20,7 @@ Após criar o repositório, o GitHub mostrará instruções. Use estas:
 
 ```bash
 # Adicionar o repositório remoto
-git remote add origin https://github.com/SEU-USUARIO/hospital-site.git
+git remote add origin https://github.com/SEU-USUARIO/hospital.git
 
 # Verificar se foi adicionado
 git remote -v
