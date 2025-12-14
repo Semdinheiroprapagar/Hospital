@@ -4,15 +4,18 @@ import db from '@/lib/db';
 // GET all posts or a specific post
 export async function GET(request: NextRequest) {
     try {
+        const startTime = Date.now();
         const { searchParams } = new URL(request.url);
         const id = searchParams.get('id');
 
         if (id) {
             const post = await db.getPost(parseInt(id));
+            console.log(`⏱️  GET post ${id}: ${Date.now() - startTime}ms`);
             return NextResponse.json(post);
         }
 
         const posts = await db.getPosts();
+        console.log(`⏱️  GET all posts: ${Date.now() - startTime}ms`);
         return NextResponse.json(posts);
     } catch (error) {
         console.error('Error fetching posts:', error);
@@ -23,7 +26,10 @@ export async function GET(request: NextRequest) {
 // POST create new post
 export async function POST(request: NextRequest) {
     try {
+        const startTime = Date.now();
         const { title, content, image_url, published } = await request.json();
+
+        console.log('📝 Creating post:', { title, hasImage: !!image_url });
 
         const post = await db.createPost({
             title,
@@ -32,6 +38,7 @@ export async function POST(request: NextRequest) {
             published: published ?? true,
         });
 
+        console.log(`✅ POST created in ${Date.now() - startTime}ms`);
         return NextResponse.json({ success: true, id: post.id });
     } catch (error) {
         console.error('Error creating post:', error);

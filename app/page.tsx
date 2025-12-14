@@ -8,6 +8,9 @@ import ContactSection from '@/components/ContactSection';
 import db from '@/lib/db';
 import './page.css';
 
+// Revalidate every 60 seconds
+export const revalidate = 60;
+
 // Helper function to convert Date to ISO string (handles both Date objects and strings)
 function toISOString(date: Date | string): string {
   if (typeof date === 'string') {

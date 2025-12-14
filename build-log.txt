@@ -1,0 +1,58 @@
+
+> hospital-site@0.1.0 build
+> next build
+
+   ▲ Next.js 16.0.7 (Turbopack)
+   - Environments: .env.local
+
+ ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 5.0s
+   Running TypeScript ...
+   Collecting page data using 9 workers ...
+🚀 Using Supabase database
+🚀 Using Supabase database
+🚀 Using Supabase database
+🚀 Using Supabase database
+🚀 Using Supabase database
+🚀 Using Supabase database
+🚀 Using Supabase database
+🚀 Using Supabase database
+🚀 Using Supabase database
+   Generating static pages using 9 workers (0/20) ...
+   Generating static pages using 9 workers (5/20) 
+🚀 Using Supabase database
+   Generating static pages using 9 workers (10/20) 
+   Generating static pages using 9 workers (15/20) 
+🚀 Using Supabase database
+ ✓ Generating static pages using 9 workers (20/20) in 1877.0ms
+   Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /admin
+├ ○ /admin/banners
+├ ○ /admin/contact
+├ ○ /admin/history
+├ ○ /admin/login
+├ ○ /admin/posts
+├ ○ /admin/testimonials
+├ ƒ /api/auth/login
+├ ƒ /api/auth/logout
+├ ƒ /api/banners
+├ ƒ /api/contact
+├ ƒ /api/contact/[id]
+├ ƒ /api/history
+├ ƒ /api/posts
+├ ƒ /api/testimonials
+├ ƒ /api/upload
+├ ƒ /api/upload/delete
+└ ƒ /post/[id]
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

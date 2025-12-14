@@ -6,6 +6,9 @@ import styles from './page.module.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
+// Revalidate every 60 seconds
+export const revalidate = 60;
+
 export default async function PostPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
 
