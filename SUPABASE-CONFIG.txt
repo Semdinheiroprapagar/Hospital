@@ -1,0 +1,46 @@
+# ============================================
+# DATABASE CONFIGURATION
+# ============================================
+# Escolha: 'sqlite' (local) ou 'supabase' (nuvem)
+# Para usar Supabase, mude para: DATABASE_TYPE=supabase
+DATABASE_TYPE=supabase
+
+# ============================================
+# SUPABASE CONFIGURATION
+# ============================================
+# IMPORTANTE: Obtenha essas credenciais em https://supabase.com
+# Vá em: Settings > API no seu projeto
+
+# 1. Project URL (exemplo: https://xyzabc123.supabase.co)
+NEXT_PUBLIC_SUPABASE_URL=https://SEU-PROJETO-ID.supabase.co
+
+# 2. Anon Key (chave pública - encontre em "anon public")
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.COLE-SUA-ANON-KEY-AQUI
+
+# 3. Service Role Key (chave privada - encontre em "service_role")
+# ⚠️ ATENÇÃO: Esta é uma chave SECRETA! Nunca compartilhe!
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.COLE-SUA-SERVICE-ROLE-KEY-AQUI
+
+# ============================================
+# ADMIN CREDENTIALS
+# ============================================
+# Credenciais para acessar /admin
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=sua-senha-segura-aqui
+
+# ============================================
+# JWT SECRET
+# ============================================
+# Chave secreta para autenticação (pode ser qualquer string longa e aleatória)
+JWT_SECRET=sua-chave-secreta-jwt-aqui
+
+# ============================================
+# INSTRUÇÕES RÁPIDAS
+# ============================================
+# 1. Crie um projeto em: https://supabase.com
+# 2. Execute o script SQL: scripts/setup-supabase.sql no SQL Editor
+# 3. Vá em Settings > API e copie as 3 credenciais acima
+# 4. Substitua os valores de exemplo pelas suas credenciais reais
+# 5. Salve este arquivo como .env.local
+# 6. Reinicie o servidor: npm run dev
+# 7. Você deve ver: "🚀 Using Supabase database"

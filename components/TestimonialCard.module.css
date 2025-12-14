@@ -1,0 +1,34 @@
+.testimonialCard {
+    position: relative;
+    padding: 32px;
+    background: var(--card-bg);
+}
+
+.quoteIcon {
+    margin-bottom: 16px;
+}
+
+.testimonialContent {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--foreground);
+    margin-bottom: 24px;
+    font-style: italic;
+}
+
+.testimonialAuthor {
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+}
+
+.authorName {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--foreground);
+    margin-bottom: 4px;
+}
+
+.authorRole {
+    font-size: 0.875rem;
+    color: #6e6e73;
+}

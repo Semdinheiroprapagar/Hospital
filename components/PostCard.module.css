@@ -1,0 +1,121 @@
+.postCard {
+    position: relative;
+    height: 480px;
+    border-radius: 30px;
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+}
+
+.postCard:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.postImage {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+
+.postImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.postCard:hover .postImage img {
+    transform: scale(1.1);
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.3) 0%,
+            rgba(0, 0, 0, 0) 30%,
+            rgba(0, 0, 0, 0) 60%,
+            rgba(0, 0, 0, 0.6) 100%);
+    z-index: 1;
+}
+
+.postContent {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    color: white;
+    justify-content: space-between;
+}
+
+.topContent {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.category {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.postTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: white;
+    margin: 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    max-width: 90%;
+}
+
+.bottomContent {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.plusButton {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.postCard:hover .plusButton {
+    background: white;
+    color: black;
+    transform: scale(1.1);
+}
+
+.postDate {
+    display: none;
+    /* Hiding date for cleaner look, similar to reference */
+}
+
+.postExcerpt {
+    display: none;
+    /* Hiding excerpt to match the clean visual style */
+}
+
+.readMore {
+    display: none;
+    /* Replaced by the whole card being clickable + plus button */
+}

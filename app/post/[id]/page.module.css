@@ -1,0 +1,164 @@
+.postPage {
+    min-height: 100vh;
+    background: rgba(245, 245, 247, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.main {
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+    z-index: 1;
+}
+
+.closeButton {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(230, 230, 230, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1d1d1f;
+    transition: all 0.2s ease;
+    z-index: 100;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.closeButton:hover {
+    background: rgba(200, 200, 200, 0.9);
+    transform: scale(1.05);
+}
+
+.postArticle {
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    margin-top: 20px;
+    animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.postImageContainer {
+    width: 100%;
+    height: 500px;
+    position: relative;
+}
+
+.postImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.postHeader {
+    padding: 60px 60px 40px;
+    text-align: center;
+}
+
+.category {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #86868b;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.postTitle {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    color: #1d1d1f;
+    margin: 0 auto;
+    max-width: 90%;
+    letter-spacing: -0.015em;
+}
+
+.postDate {
+    display: none;
+}
+
+.postContent {
+    padding: 0 60px 80px;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #1d1d1f;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.postContent p {
+    margin-bottom: 32px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-weight: 400;
+}
+
+.postContent p:first-child {
+    font-weight: 600;
+    /* Lead paragraph style */
+}
+
+@media (max-width: 768px) {
+    .postPage {
+        padding: 0;
+        background: #fff;
+    }
+
+    .postArticle {
+        border-radius: 0;
+        box-shadow: none;
+        margin-top: 0;
+        min-height: 100vh;
+    }
+
+    .postImageContainer {
+        height: 350px;
+    }
+
+    .postHeader {
+        padding: 40px 24px 24px;
+        text-align: left;
+    }
+
+    .postTitle {
+        text-align: left;
+        max-width: 100%;
+    }
+
+    .postContent {
+        padding: 0 24px 60px;
+        font-size: 1.125rem;
+    }
+
+    .closeButton {
+        top: 16px;
+        right: 16px;
+        background: rgba(255, 255, 255, 0.9);
+    }
+}
