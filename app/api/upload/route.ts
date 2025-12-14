@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile, mkdir } from 'fs/promises';
-import path from 'path';
-import { existsSync } from 'fs';
+import { createClient } from '@supabase/supabase-js';
 
 export async function POST(request: NextRequest) {
     try {
@@ -40,33 +38,89 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        // Generate unique filename
-        const bytes = await file.arrayBuffer();
-        const buffer = Buffer.from(bytes);
-        const timestamp = Date.now();
-        const originalName = file.name.replace(/\s+/g, '-');
-        const filename = `${timestamp}-${originalName}`;
+        // Check if using Supabase
+        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+        const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-        // Ensure upload directory exists
-        const uploadDir = path.join(process.cwd(), 'public', 'uploads');
-        if (!existsSync(uploadDir)) {
-            console.log('Creating uploads directory:', uploadDir);
-            await mkdir(uploadDir, { recursive: true });
+        if (supabaseUrl && supabaseKey) {
+            // Use Supabase Storage
+            console.log('Using Supabase Storage');
+
+            const supabase = createClient(supabaseUrl, supabaseKey);
+
+            // Generate unique filename
+            const timestamp = Date.now();
+            const originalName = file.name.replace(/\s+/g, '-');
+            const filename = `${timestamp}-${originalName}`;
+
+            // Convert file to buffer
+            const bytes = await file.arrayBuffer();
+            const buffer = Buffer.from(bytes);
+
+            // Upload to Supabase Storage
+            const { data, error } = await supabase.storage
+                .from('images')
+                .upload(filename, buffer, {
+                    contentType: file.type,
+                    upsert: false
+                });
+
+            if (error) {
+                console.error('Supabase upload error:', error);
+                return NextResponse.json(
+                    { error: `Erro ao fazer upload no Supabase: ${error.message}` },
+                    { status: 500 }
+                );
+            }
+
+            // Get public URL
+            const { data: { publicUrl } } = supabase.storage
+                .from('images')
+                .getPublicUrl(filename);
+
+            console.log('File uploaded to Supabase:', publicUrl);
+
+            return NextResponse.json({
+                success: true,
+                url: publicUrl,
+                filename: filename
+            });
+        } else {
+            // Fallback to local storage (for development)
+            console.log('Using local storage (development only)');
+
+            const { writeFile, mkdir } = await import('fs/promises');
+            const { existsSync } = await import('fs');
+            const path = await import('path');
+
+            const timestamp = Date.now();
+            const originalName = file.name.replace(/\s+/g, '-');
+            const filename = `${timestamp}-${originalName}`;
+
+            const bytes = await file.arrayBuffer();
+            const buffer = Buffer.from(bytes);
+
+            // Ensure upload directory exists
+            const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+            if (!existsSync(uploadDir)) {
+                console.log('Creating uploads directory:', uploadDir);
+                await mkdir(uploadDir, { recursive: true });
+            }
+
+            // Save file
+            const filepath = path.join(uploadDir, filename);
+            await writeFile(filepath, buffer);
+            console.log('File saved locally:', filepath);
+
+            // Return public URL
+            const publicUrl = `/uploads/${filename}`;
+
+            return NextResponse.json({
+                success: true,
+                url: publicUrl,
+                filename: filename
+            });
         }
-
-        // Save file
-        const filepath = path.join(uploadDir, filename);
-        await writeFile(filepath, buffer);
-        console.log('File saved successfully:', filepath);
-
-        // Return public URL
-        const publicUrl = `/uploads/${filename}`;
-
-        return NextResponse.json({
-            success: true,
-            url: publicUrl,
-            filename: filename
-        });
     } catch (error: any) {
         console.error('Upload error details:', {
             message: error.message,
