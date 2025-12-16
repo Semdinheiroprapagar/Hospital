@@ -88,7 +88,7 @@ export default function Footer() {
         </div>
 
         <div className={styles.footerBottom}>
-          <p>&copy; {new Date().getFullYear()} Próteses Médicas 3D. Todos os direitos reservados.</p>
+          <p>&copy; {new Date().getFullYear()} MGS Tecnologia em biomodelos. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>
