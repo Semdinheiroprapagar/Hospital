@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import HistorySection from '@/components/HistorySection';
 import ContactSection from '@/components/ContactSection';
+import CaseAnalysisSection from '@/components/CaseAnalysisSection';
 import db from '@/lib/db';
 import './page.css';
 
@@ -92,6 +93,9 @@ export default async function Home() {
           </div>
         </section>
       )}
+
+      {/* Case Analysis Section */}
+      <CaseAnalysisSection />
 
       {/* Contact Section */}
       <ContactSection cards={contactCards} />

@@ -23,6 +23,7 @@ export default function Navbar() {
         { name: 'Sobre', href: '#historia' },
         { name: 'Publicações', href: '#publicacoes' },
         { name: 'Relatos', href: '#relatos' },
+        { name: 'Solicitar Análise', href: '#analise-caso' },
     ];
 
     const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
