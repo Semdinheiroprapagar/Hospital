@@ -116,11 +116,11 @@
     margin-bottom: 32px;
     white-space: pre-wrap;
     word-wrap: break-word;
-    font-weight: 400;
+    font-weight: 400 !important;
 }
 
 .postContent p:first-child {
-    font-weight: 400;
+    font-weight: 400 !important;
     /* Lead paragraph style */
 }
 
