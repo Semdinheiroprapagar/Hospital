@@ -8,6 +8,7 @@ export default function CaseAnalysisSection() {
         name: '',
         email: '',
         phone: '',
+        message: '',
     });
     const [file, setFile] = useState<File | null>(null);
     const [loading, setLoading] = useState(false);
@@ -36,7 +37,7 @@ export default function CaseAnalysisSection() {
             data.append('name', formData.name);
             data.append('email', formData.email);
             data.append('phone', formData.phone);
-            data.append('message', ''); // Removido campo de mensagem
+            data.append('message', formData.message);
             data.append('file', file);
 
             // Enviar para API
@@ -54,7 +55,7 @@ export default function CaseAnalysisSection() {
 
             // Sucesso
             setSuccess(true);
-            setFormData({ name: '', email: '', phone: '' });
+            setFormData({ name: '', email: '', phone: '', message: '' });
             setFile(null);
 
             // Abrir WhatsApp se houver número configurado
@@ -104,6 +105,16 @@ export default function CaseAnalysisSection() {
                             placeholder="Telefone/WhatsApp"
                             value={formData.phone}
                             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        />
+                    </div>
+
+                    <div className={styles.inputWrapper}>
+                        <textarea
+                            rows={4}
+                            className={styles.messageInput}
+                            placeholder="Mensagem (opcional)"
+                            value={formData.message}
+                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         />
                     </div>
 

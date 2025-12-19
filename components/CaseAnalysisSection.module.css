@@ -58,6 +58,34 @@
     box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
 }
 
+.messageInput {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 1.0625rem;
+    border: 1px solid #0071e3;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #1d1d1f;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 100px;
+}
+
+.messageInput::placeholder {
+    color: #86868b;
+}
+
+.messageInput:hover {
+    border-color: #0077ed;
+}
+
+.messageInput:focus {
+    outline: none;
+    border-color: #0071e3;
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
+}
+
 .fileSection {
     margin-top: 8px;
 }
