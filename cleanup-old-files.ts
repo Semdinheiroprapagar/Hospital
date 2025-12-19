@@ -15,7 +15,7 @@ if (!supabaseUrl || !supabaseKey) {
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Configuração: Deletar arquivos com mais de X dias
-const DAYS_TO_KEEP = 30; // Altere este valor conforme necessário
+const DAYS_TO_KEEP = 1; // Arquivos serão deletados após 1 dia
 
 async function cleanupOldFiles() {
     console.log(`🧹 Limpando arquivos com mais de ${DAYS_TO_KEEP} dias...\n`);
