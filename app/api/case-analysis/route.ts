@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { trackCaseAnalysisSubmission } from '@/lib/facebook-conversions';
 
 // Initialize Supabase client
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -100,6 +101,21 @@ export async function POST(request: NextRequest) {
                 `_Enviado em ${date.toLocaleString('pt-BR')}_`
             );
             whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+        }
+
+        // Track Facebook Conversion
+        try {
+            await trackCaseAnalysisSubmission({
+                email,
+                phone,
+                name,
+                eventSourceUrl: request.url,
+                clientIp: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || undefined,
+                userAgent: request.headers.get('user-agent') || undefined,
+            });
+        } catch (fbError) {
+            console.error('Facebook tracking error:', fbError);
+            // Não falhar a requisição se o tracking falhar
         }
 
         return NextResponse.json({
