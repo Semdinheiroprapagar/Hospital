@@ -17,7 +17,8 @@ export default function FacebookPixel() {
     useEffect(() => {
         // Inicializar Facebook Pixel
         if (typeof window !== 'undefined') {
-            (function (f: any, b: any, e: any, v: any, n: any, t: any, s: any) {
+            (function (f: any, b: any, e: any, v: any) {
+                let n: any, t: any, s: any;
                 if (f.fbq) return;
                 n = f.fbq = function () {
                     n.callMethod
