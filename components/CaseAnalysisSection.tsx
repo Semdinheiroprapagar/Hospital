@@ -131,7 +131,7 @@ export default function CaseAnalysisSection() {
                             {file ? `📎 ${file.name}` : 'Anexar arquivo (exames, imagens)'}
                         </label>
                         <p className={styles.fileHint}>
-                            PDF, JPG, PNG ou DICOM • Máx 10MB
+                            PDF, JPG, PNG ou DICOM
                         </p>
                     </div>
 
