@@ -22,7 +22,6 @@ export default function Navbar() {
         { name: 'Início', href: '#inicio' },
         { name: 'Sobre', href: '#historia' },
         { name: 'Publicações', href: '#publicacoes' },
-        { name: 'Relatos', href: '#relatos' },
         { name: 'Solicitar Análise', href: '#analise-caso' },
     ];
 
